@@ -1,0 +1,21 @@
+Pertanyaan :
+1. Jelaskan Lighting yang ada di OpenGL !
+2. Jelaskan apa kegunaan void lighting di atas !
+3. Analisislah Bagaimana Kubus, Grid dan pencahayaan tersebut dapat dibuat!
+
+Jawaban:
+1. Dalam model OpenGL, sumber cahaya hanya memiliki efek ketika ada permukaan yang menyerap dan memantulkan cahaya. Setiap permukaan diasumsikan terdiri dari bahan dengan berbagai sifat. Sebuah bahan bisa memancarkan cahaya sendiri seperti lampu pada sebuah mobil atau mungkin menyebarkan beberapa cahaya yang masuk ke segala penjuru, dan mungkin juga memantulkan sebagian dari cahaya masuk dalam arah preferensial seperti cermin atau permukaan mengilap. Model pencahayaan yang OpenGL mempertimbangkan pencahayaan yang dibagi menjadi empat komponen independen: memancarkan (emissi), ambient, diffuse, dan specular. Semua empat komponen dihitung secara independen dan kemudian ditambahkan secara bersamasama.
+
+Cahaya Ambient, Diffuse, dan specular
+
+Pencahayaan Ambient adalah cahaya yang sudah berserakan begitu banyak disebabkan oleh lingkungan dan arahnya tidak mungkin ditentukan atau tampaknya datang dari segala penjuru. Backlighting pada sebuah ruangan memiliki komponen ambient besar, karena sebagian besar cahaya yang mencapai mata yang memantul dari banyak permukaan. Sebuah lampu sorot kecil di luar rumah memiliki komponen ambient, sebagian besar cahaya dalam arah yang sama, dan karena diluar, sangat sedikit cahaya mencapai mata setelah memantul dari benda-benda lain. Ketika cahaya ambient menyerang permukaan, maka akan tersebar merata di segala penjuru.
+
+Komponen cahaya diffuse adalah komponen yang berasal dari satu arah, jadi akan terang kalau hal tersebut terjadi tepat diatas sebuah permukaan dibandingkan jika hampir tidak terjadi di atas permukaan. Setelah mengenai permukaan, akan tersebar merata di segala penjuru, sehingga tampak sama-sama terang, tak peduli di mana mata berada. Setiap cahaya yang datang dari posisi atau arah tertentu mungkin memiliki komponen diffuse.
+
+Cahaya specular datang dari arah tertentu, dan cenderung terpental pada permukaan dalam arah yang diinginkan. sinar laser berkualitas tinggi memantul pada cermin dan menghasilkan hampir 100 persen refleksi specular. Logam atau plastik mengilap memiliki komponen specular tinggi, dan kapur atau karpet telah hampir tidak ada. Specularity dapat juga dianggap sebagai shininess.
+
+Meskipun sumber cahaya memberikan satu distribusi frekuensi, komponen ambient, diffuse, dan specular mungkin berbeda. Sebagai contoh, jika memiliki cahaya putih di sebuah ruangan dengan dinding merah, cahaya yang tersebar cenderung menjadi warna merah, meskipun cahaya secara langsung objek putih yang mencolok. OpenGL memungkinkan untuk mengatur nilai merah, hijau, dan biru untuk setiap komponen cahaya secara bebas.
+
+2. Void lighting tersebut digunakan untuk mengaktifkan pencahayaan pada objek yang sudah dibuat.
+
+3. Kubus tersusun dari 6 buah poligon segiempat yang disusun sedemikan rupa sehinnga membentuk kubus. Poligon pertama digunakan sebagai acuan untuk poligon selanjutnya. Poligon pertama untuk menampilkan bidang bagian depan kubus, kemudian untuk membuat bagian atas digunakan poligon yang ukurannya sama dengan poligon pertama namun ditambah rotasi sebesar 90 derajat mengelilingi sumbu x, dan untuk membuat semua sisi, langkah yang digunakan sama dengan membuat sisi atas namun hanya besar sudut dan sumbu poros yang diubah. Biasanya metode ini dinamakan Surface of Revolution.
